@@ -1,0 +1,245 @@
+body {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef); /* Gradiente suave */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #212529;
+}
+
+.navbar {
+    background-color: #003366 !important;
+}
+
+#euft-title {
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: #ffffff !important;
+    animation: fadeIn 2s ease-in-out;
+    text-align: center;
+}
+
+.fade-in-slow {
+    opacity: 0;
+    animation: fadeInSlow 2s forwards;
+}
+
+@keyframes fadeInSlow {
+    to {
+        opacity: 1;
+    }
+}
+
+.blink {
+    animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Cards com animação suave de entrada */
+.card.central-card,
+.table-card {
+    max-width: 950px;
+    margin: 0 auto;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    animation: fadeInCard 0.8s ease-in-out;
+}
+
+@keyframes fadeInCard {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card-header {
+    background-color: #003366;
+    color: white;
+    border-radius: 20px 20px 0 0;
+    padding: 15px;
+}
+
+.card-header h5 {
+    transition: color 0.3s ease;
+}
+
+.card-header h5:hover {
+    color: #ffc107; /* Realça o título com cor dourada */
+}
+
+.card-body {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 0 0 20px 20px;
+}
+
+/* Botões com animação de elevação */
+.btn-custom {
+    border-radius: 30px;
+    padding: 10px 25px;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(0);
+}
+
+.btn-custom:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.btn-custom:active {
+    transform: translateY(3px);
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Estilo dos botões */
+.btn-outline-success {
+    border-color: #28a745;
+    color: #28a745;
+}
+
+.btn-outline-success:hover {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.btn-outline-info {
+    border-color: #17a2b8;
+    color: #17a2b8;
+}
+
+.btn-outline-info:hover {
+    background-color: #17a2b8;
+    color: #fff;
+}
+
+.btn-outline-danger {
+    border-color: #dc3545;
+    color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-outline-warning {
+    border-color: #ffc107;
+    color: #ffc107;
+}
+
+.btn-outline-warning:hover {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+/* Estilo de tabelas */
+.table-card {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.responsive-table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table thead th {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+}
+
+table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Rodapé */
+.footer {
+    background-color: #003366 !important;
+    color: white;
+    text-align: center;
+}
+
+.footer .text-muted {
+    color: #ffffff !important;
+    font-size: 0.9rem;
+}
+
+.mt-3, .mt-4, .mt-5 {
+    margin-top: 1.5rem !important;
+}
+
+.me-2 {
+    margin-right: 0.5rem !important;
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    .table {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .central-card, .table-card {
+        padding: 20px;
+    }
+
+    .table {
+        max-width: 100%;
+    }
+
+    .fade-in-slow {
+        font-size: 40px;
+    }
+
+    #euft-title {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .central-card, .table-card {
+        padding: 15px;
+        width: 95%;
+    }
+
+    .fade-in-slow {
+        font-size: 30px;
+    }
+
+    #euft-title {
+        font-size: 16px;
+    }
+
+    .btn-success {
+        padding: 8px 15px;
+    }
+
+    body {
+        font-size: 15px;
+    }
+}
+
+/* Permite rolagem horizontal em telas pequenas */
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+}
