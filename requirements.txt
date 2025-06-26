@@ -1,6 +1,3 @@
-setuptools>=65.0.0
-wheel
-build
 altair==4.2.2
 altgraph==0.17.3
 asgiref==3.7.2
