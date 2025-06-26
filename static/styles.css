@@ -1,7 +1,8 @@
 body {
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef); /* Gradiente suave */
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #212529;
+    font-size: 15px;
 }
 
 .navbar {
@@ -37,14 +38,22 @@ body {
     }
 }
 
-/* Cards com animaÁ„o suave de entrada */
+/* Cards com anima√ß√£o suave */
 .card.central-card,
 .table-card {
-    max-width: 950px;
+    max-width: 965px;
     margin: 0 auto;
-    border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    animation: fadeInCard 0.8s ease-in-out;
+    border-radius: 25px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    animation: fadeInCard 0.8s ease-in-out, fadeIn 1.5s forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+}
+
+.card.central-card:hover,
+.table-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes fadeInCard {
@@ -58,48 +67,51 @@ body {
     }
 }
 
-.card-header {
-    background-color: #003366;
-    color: white;
-    border-radius: 20px 20px 0 0;
-    padding: 15px;
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
 }
 
-.card-header h5 {
-    transition: color 0.3s ease;
-}
-
-.card-header h5:hover {
-    color: #ffc107; /* RealÁa o tÌtulo com cor dourada */
-}
-
-.card-body {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 0 0 20px 20px;
-}
-
-/* Botıes com animaÁ„o de elevaÁ„o */
+/* Bot√µes */
+.btn,
 .btn-custom {
     border-radius: 30px;
-    padding: 10px 25px;
+    padding: 10px 20px;
     font-weight: bold;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    animation: fadeInBtn 2s forwards;
+}
+
+.btn-custom {
+    padding: 10px 25px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    transform: translateY(0);
+    transition: all 0.2s ease-in-out;
 }
 
+.btn:hover,
 .btn-custom:hover {
-    transform: translateY(-4px);
+    transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    background-color: #003366;
+    color: white;
 }
 
+.btn:active,
 .btn-custom:active {
     transform: translateY(3px);
-    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* Estilo dos botıes */
+@keyframes fadeInBtn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Bot√µes outline */
 .btn-outline-success {
     border-color: #28a745;
     color: #28a745;
@@ -140,15 +152,55 @@ body {
     color: #212529;
 }
 
-/* Estilo de tabelas */
+/* Card */
+.card-header {
+    background-color: #003366;
+    color: white;
+    border-radius: 20px 20px 0 0;
+    padding: 15px;
+}
+
+.card-header h5 {
+    transition: color 0.3s ease;
+}
+
+.card-header h5:hover {
+    color: #ffc107;
+}
+
+.card-body {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 0 0 20px 20px;
+}
+
+/* Select */
+select.form-select {
+    border-radius: 25px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border: 2px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+select.form-select:focus {
+    border-color: #003366;
+    box-shadow: 0 0 0 0.2rem rgba(0, 51, 102, 0.25);
+}
+
+/* Tabela */
 .table-card {
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.responsive-table-container {
+.responsive-table-container,
+.table-responsive {
     overflow-x: auto;
+    width: 100%;
 }
 
 table {
@@ -166,7 +218,7 @@ table tbody tr:hover {
     background-color: #f1f1f1;
 }
 
-/* RodapÈ */
+/* Rodap√© */
 .footer {
     background-color: #003366 !important;
     color: white;
@@ -178,6 +230,7 @@ table tbody tr:hover {
     font-size: 0.9rem;
 }
 
+/* Margens utilit√°rias */
 .mt-3, .mt-4, .mt-5 {
     margin-top: 1.5rem !important;
 }
@@ -199,11 +252,8 @@ table tbody tr:hover {
 
 @media (max-width: 768px) {
     .central-card, .table-card {
-        padding: 20px;
-    }
-
-    .table {
-        max-width: 100%;
+        padding: 15px;
+        max-width: 92%;
     }
 
     .fade-in-slow {
@@ -232,14 +282,34 @@ table tbody tr:hover {
     .btn-success {
         padding: 8px 15px;
     }
+}
 
-    body {
-        font-size: 15px;
+/* Gr√°fico */
+#graficoImpacto {
+    height: 400px !important;
+}
+
+/* Ajuste responsivo para bot√µes e selects em telas pequenas */
+@media (max-width: 576px) {
+    .btn,
+    .btn-custom,
+    select.form-select {
+        width: 100% !important;
+        max-width: 100%;
+        font-size: 0.9rem;
+        padding: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .btn-custom {
+        padding: 10px 15px;
+    }
+
+    .form-group,
+    .form-select {
+        margin-bottom: 10px;
     }
 }
 
-/* Permite rolagem horizontal em telas pequenas */
-.table-responsive {
-    overflow-x: auto;
-    width: 100%;
-}
