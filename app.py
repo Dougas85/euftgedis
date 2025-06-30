@@ -650,7 +650,7 @@ def index():
                     data_partida_str = data_partida_dt.strftime('%d/%m/%Y %H:%M')
                 else:
                     duracao_horas = 0
-                    data_partida = ''
+                    data_partida_str = ''
                 
                 unidade = data['Unidade em Operação']
         
@@ -672,7 +672,7 @@ def index():
         
                 veiculos_sem_retorno_data.append({
                     'Placa': placa,
-                    'DataPartida': data_partida,
+                    'DataPartida': data_partida_str,
                     'Unidade': unidade,
                     'Lotacao': lotacao_patrimonial,
                     'CAE': CAE,
