@@ -646,7 +646,7 @@ def index():
                 duracao_horas = 0
                 if pd.notna(data_partida_dt):
                     duracao = datetime.now() - data_partida_dt
-                    duracao_horas = duracao.total_seconds() / 3600
+                    duracao_horas = round(duracao.total_seconds() / 3600, 2)
 
                 valores = placas_to_lotacao.get(placa)
                 if isinstance(valores, str):
