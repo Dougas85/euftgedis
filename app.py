@@ -638,7 +638,8 @@ def index():
             for i, row in enumerate(placas_sem_retorno.iterrows(), start=1):
                 _, data = row
                 placa = data['Placa']
-                data_partida = data['Data Partida'].strftime('%d/%m/%Y') if pd.notna(data['Data Partida']) else ''
+                data_partida_dt = data['Data Partida']
+                data_partida = data_partida_dt.strftime('%d/%m/%Y') if pd.notna(data_partida_dt) else ''
                 unidade = data['Unidade em Operação']
 
                 # Cálculo da duração em horas
