@@ -641,6 +641,12 @@ def index():
                 data_partida = data['Data Partida'].strftime('%d/%m/%Y') if pd.notna(data['Data Partida']) else ''
                 unidade = data['Unidade em Operação']
 
+                # Cálculo da duração em horas
+                duracao_horas = 0
+                if pd.notna(data_partida_dt):
+                    duracao = datetime.now() - data_partida_dt
+                    duracao_horas = duracao.total_seconds() / 3600
+
                 valores = placas_to_lotacao.get(placa)
                 if isinstance(valores, str):
                     if " - " in valores:
@@ -662,7 +668,8 @@ def index():
                     'DataPartida': data_partida,
                     'Unidade': unidade,
                     'Lotacao': lotacao_patrimonial,
-                    'CAE': CAE
+                    'CAE': CAE,
+                    'DuracaoHoras': duracao_horas
                 })
 
         except Exception as e:
