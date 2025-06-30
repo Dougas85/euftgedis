@@ -638,16 +638,21 @@ def index():
             for i, row in enumerate(placas_sem_retorno.iterrows(), start=1):
                 _, data = row
                 placa = data['Placa']
-                data_partida_dt = data['Data Partida']
-                data_partida = data_partida_dt.strftime('%d/%m/%Y') if pd.notna(data_partida_dt) else ''
-                unidade = data['Unidade em Operação']
-
+                
+                # Garante que a data esteja em formato datetime
+                data_partida_dt = pd.to_datetime(data['Data Partida'], errors='coerce')
+                
                 # Cálculo da duração em horas
-                duracao_horas = 0
                 if pd.notna(data_partida_dt):
                     duracao = datetime.now() - data_partida_dt
                     duracao_horas = round(duracao.total_seconds() / 3600, 2)
-
+                    data_partida = data_partida_dt.strftime('%d/%m/%Y')
+                else:
+                    duracao_horas = 0
+                    data_partida = ''
+                
+                unidade = data['Unidade em Operação']
+        
                 valores = placas_to_lotacao.get(placa)
                 if isinstance(valores, str):
                     if " - " in valores:
@@ -663,7 +668,7 @@ def index():
                 else:
                     lotacao_patrimonial = " "
                     CAE = " "
-
+        
                 veiculos_sem_retorno_data.append({
                     'Placa': placa,
                     'DataPartida': data_partida,
@@ -672,10 +677,9 @@ def index():
                     'CAE': CAE,
                     'DuracaoHoras': duracao_horas
                 })
-
         except Exception as e:
             print(f"Erro ao processar veículos sem retorno: {e}")
-            # A variável ainda existirá como lista vazia, evitando quebra na renderização
+
 
         # Continuação do seu processamento
         impacto_unidade = erros.groupby('Unidade em Operação').size().reset_index(name='Qtd_Erros')
