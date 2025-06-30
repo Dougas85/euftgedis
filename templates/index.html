@@ -251,7 +251,7 @@
             </thead>
             <tbody>
               {% for item in veiculos_sem_retorno_data %}
-              <tr {% if item['DuracaoHoras'] > 7 %} class="table-danger" {% endif %}>
+              <tr {% if item['DuracaoHoras'] and item['DuracaoHoras] > 7 %} class="table-danger" {% endif %}>
                 <td>{{ loop.index }}</td>
                 <td>{{ item['Placa'] }}</td>
                 <td>{{ item['DataPartida'] }}</td>
