@@ -640,13 +640,14 @@ def index():
                 placa = data['Placa']
                 
                 # Garante que a data esteja em formato datetime
-                data_partida_dt = pd.to_datetime(data['Data Partida'], errors='coerce')
+                data_partida_raw = data['Data Partida']
+                data_partida_dt = pd.to_datetime(data_partida_raw, errors='coerce')
                 
                 # Cálculo da duração em horas
                 if pd.notna(data_partida_dt):
                     duracao = datetime.now() - data_partida_dt
                     duracao_horas = round(duracao.total_seconds() / 3600, 2)
-                    data_partida = data_partida_dt.strftime('%d/%m/%Y')
+                    data_partida_str = data_partida_dt.strftime('%d/%m/%Y %H:%M')
                 else:
                     duracao_horas = 0
                     data_partida = ''
